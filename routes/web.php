@@ -30,9 +30,15 @@ $router->group([
     'prefix' => 'v1'
 
 ], function ($router) {
-
-
+    $router->post('create', 'TaskController@addTask');
+    $router->post('update/{id}', 'TaskController@updateTask');
+    $router->delete('delete/{id}', 'TaskController@delete');
+    $router->get('getall', 'TaskController@getall');
+    $router->put('changeStatus/{id}/{status}', 'TaskController@changeStatus');
+    $router->get('get/{id}', 'TaskController@get');
 });
+
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
